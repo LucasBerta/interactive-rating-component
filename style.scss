@@ -78,7 +78,8 @@ body {
 .thank-you-card {
   display: flex;
   flex-direction: column;
-  width: 39rem;
+  width: 85vw;
+  max-width: 39rem;
   padding: 3rem 2.5rem;
   @include stdTransition(transform);
 }

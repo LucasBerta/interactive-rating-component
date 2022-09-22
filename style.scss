@@ -1,0 +1,214 @@
+// Colors
+$accent: hsl(25, 97%, 53%);
+
+$white: hsl(0, 0%, 100%);
+$lightGrey: hsl(217, 12%, 63%);
+$mediumGrey: hsl(216, 12%, 54%);
+$cardBackground: hsl(218deg, 27%, 12%);
+$mainBackground: hsl(216, 12%, 8%);
+
+// Variables
+$fontSizeParagraph: 1.5rem;
+
+// Mixins
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin stdTransition($transition: all) {
+  transition: $transition 0.15s ease-in-out;
+}
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  /* 1 rem = 10px; 10px/16px = 62.5% */
+  font-size: 62.5%;
+  font-family: "Overpass", sans-serif;
+}
+
+// Components Style
+h1 {
+  color: $white;
+  font-size: 2.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+body {
+  background-color: $mainBackground;
+  @include flexCenter;
+  flex-direction: column;
+}
+
+.card-container {
+  position: relative;
+  display: flex;
+  margin-top: auto;
+  background-color: $cardBackground;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.description {
+  color: $mediumGrey;
+  font-size: $fontSizeParagraph;
+  line-height: 2.4rem;
+  margin-bottom: 2.5rem;
+}
+
+.feedback-card,
+.thank-you-card {
+  display: flex;
+  flex-direction: column;
+  width: 39rem;
+  padding: 3rem 2.5rem;
+  @include stdTransition(transform);
+}
+
+.feedback-card {
+  &.submitted {
+    transform: translateX(-100%);
+  }
+
+  .star-icon {
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: lighten($cardBackground, 5);
+    border-radius: 50%;
+    padding: 1.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__rating-container {
+    @include flexCenter;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+
+    .feedback-card__rating--option {
+      width: 5rem;
+      height: 5rem;
+      font-size: 1.6rem;
+      color: $mediumGrey;
+      border-radius: 50%;
+      background-color: lighten($cardBackground, 5);
+      cursor: pointer;
+
+      @include flexCenter;
+      @include stdTransition(all);
+
+      &.selected {
+        background-color: $lightGrey;
+        color: $white;
+      }
+
+      &:hover {
+        background-color: $accent;
+        color: $white;
+      }
+    }
+  }
+
+  &__submit {
+    &,
+    &:hover,
+    &:active,
+    &:visited {
+      border: none;
+      outline: none;
+    }
+
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    color: $white;
+    background-color: $accent;
+    border-radius: 2rem;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+
+    @include stdTransition(all);
+
+    &:hover {
+      background-color: $white;
+      color: $accent;
+    }
+  }
+}
+
+.feedback-card.submitted + .thank-you-card {
+  transform: translateX(0);
+}
+
+.thank-you-card {
+  position: absolute;
+  @include flexCenter;
+  transform: translateX(100%);
+
+  img {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+
+  &__selected-rating {
+    @include flexCenter;
+    font-size: $fontSizeParagraph;
+    color: $accent;
+    background-color: lighten($cardBackground, 5);
+    opacity: 0.7;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+
+    span {
+      margin-top: 0.3rem;
+    }
+  }
+
+  .description {
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+#submit-error-feedback {
+  font-size: 1.2rem;
+  color: #d64040;
+  margin-top: 1rem;
+  text-align: center;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+// Credits
+.attribution {
+  color: $mediumGrey;
+  font-size: 11px;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

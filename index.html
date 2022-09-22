@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Merriweather:wght@300;400;700&family=Outfit:wght@300;400;700&family=Overpass:wght@400;500;600;700&family=Tiro+Telugu&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="./index.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+  </head>
+  <body>
+    <main class="card-container">
+      <div id="feedback" class="feedback-card">
+        <img src="./images/icon-star.svg" alt="Star icon" class="star-icon" />
+        <h1 class="feedback-card__title">How did we do?</h1>
+        <p class="description">
+          Please let us know how we did with your support request. All feedback
+          is appreciated to help us improve our offering!
+        </p>
+        <form
+          action="#"
+          class="feedback-card__rating-form"
+          onsubmit="submitForm()"
+        >
+          <div class="feedback-card__rating-container">
+            <div
+              id="option-1"
+              class="feedback-card__rating--option"
+              onclick="selectOption('option-1')"
+            >
+              1
+            </div>
+            <div
+              id="option-2"
+              class="feedback-card__rating--option"
+              onclick="selectOption('option-2')"
+            >
+              2
+            </div>
+            <div
+              id="option-3"
+              class="feedback-card__rating--option"
+              onclick="selectOption('option-3')"
+            >
+              3
+            </div>
+            <div
+              id="option-4"
+              class="feedback-card__rating--option"
+              onclick="selectOption('option-4')"
+            >
+              4
+            </div>
+            <div
+              id="option-5"
+              class="feedback-card__rating--option"
+              onclick="selectOption('option-5')"
+            >
+              5
+            </div>
+          </div>
+          <button
+            id="submit-feedback"
+            class="feedback-card__submit"
+            type="submit"
+            onclick="submitForm()"
+          >
+            SUBMIT
+          </button>
+          <div id="submit-error-feedback">Please select an option!</div>
+        </form>
+      </div>
+      <div id="thank-you" class="thank-you-card">
+        <img
+          src="./images/illustration-thank-you.svg"
+          alt="Thank you picture"
+        />
+        <div class="thank-you-card__selected-rating">
+          <span id="thank-you-card__selected-rating--text"></span>
+        </div>
+        <h1 class="thank-you-card__title">Thank you!</h1>
+        <p class="description">
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don’t hesitate to get in touch!
+        </p>
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/LucasBerta">Lucas Berta</a>.
+    </div>
+  </body>
+</html>
